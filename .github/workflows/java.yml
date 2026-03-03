@@ -1,0 +1,23 @@
+name: Compilar Java
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Compilar programa
+        run: javac src/Main.java
+
+      - name: Ejecutar programa
+        run: java -cp src Main
